@@ -1,0 +1,10 @@
+# Build output
+bin/
+obj/
+.vs/
+*.user
+
+# Local AI tooling (third-party skills, not part of this project)
+.agents/
+.claude/
+skills-lock.json

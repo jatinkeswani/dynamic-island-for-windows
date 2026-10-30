@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Dynamic Island PiP",
+  "version": "1.0",
+  "description": "Lets Dynamic Island open the playing video in picture-in-picture, even when the browser is in the background.",
+  "permissions": ["scripting", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "toggle-pip": {
+      "suggested_key": { "default": "Ctrl+Shift+9" },
+      "description": "Open the playing video in picture-in-picture",
+      "global": true
+    }
+  }
+}

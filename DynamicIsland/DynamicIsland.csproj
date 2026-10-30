@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!-- The Windows 10 SDK target gives access to the system media controls (Windows.Media.Control) -->
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <UseWPF>true</UseWPF>
+    <!-- Only for the system tray icon (NotifyIcon) -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- WFAC010 is WinForms-only advice; this is a WPF app, which takes its DPI mode from the manifest -->
+    <NoWarn>$(NoWarn);WFAC010</NoWarn>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>DynamicIsland</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Companion browser extension for picture-in-picture, shipped next to the app -->
+    <None Include="BrowserExtension\**" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Avoid WPF/WinForms name clashes (Point, Application, ...); WinForms types are referenced explicitly -->
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+
+</Project>
